@@ -21,7 +21,7 @@ from psychopy.constants import (NOT_STARTED, STARTED, PLAYING, PAUSED,
 import numpy as np  # whole numpy lib is available, prepend 'np.'
 from numpy import (sin, cos, tan, log, log10, pi, average,
                    sqrt, std, deg2rad, rad2deg, linspace, asarray)
-# from numpy./andom import random, randint, normal, shuffle
+from numpy.random import random, randint, normal, shuffle
 import os  # handy system and path functions
 import sys  # to get file system encoding
 
@@ -191,19 +191,6 @@ for thisComponent in welcomeComponents:
         thisComponent.setAutoDraw(False)
 thisExp.addData('welcome_text.started', welcome_text.tStartRefresh)
 thisExp.addData('welcome_text.stopped', welcome_text.tStopRefresh)
-
-# set up handler to look after randomisation of conditions etc
-trials = data.TrialHandler(nReps=5, method='random',
-                           extraInfo=expInfo, originPath=-1,
-                           trialList=[None],
-                           seed=None, name='trials')
-thisExp.addLoop(trials)  # add the loop to the experiment
-# so we can initialise stimuli with some values
-thisTrial = trials.trialList[0]
-# AABreviate parameter names if possible (e.g. rgb = thisTrial.rgb)
-if thisTrial != None:
-    for paramName in thisTrial:
-        exec('{} = thisTrial[paramName]'.format(paramName))
 
 # ------Prepare to start Routine "training_Trial"-------
 total_train_trial_count = 0
@@ -440,7 +427,7 @@ while True:
     thisExp.nextEntry()
 
     """
-    Step 3: check answer
+    Step 3: Check answer
     """
     total_train_trial_count += 1
     input_chord_type = ChordType.AAB if current_trial_key_responsed else ChordType.ABC
