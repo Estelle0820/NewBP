@@ -215,7 +215,6 @@ while True:
     """
     Step 1: play music
     """
-    logger.info('Training %d:' % total_train_trial_count)
 
     # ------Prepare to start Routine "training_trial_chord_playing"-------
     continueRoutine = True
@@ -226,6 +225,7 @@ while True:
         # failed test
         logger.info('Training trial failed!')
         break
+    logger.info('Training %d:' % total_train_trial_count)
     logger.info('Chord: ' + chord.name)
     # keep track of which components have finished
     training_trial_chord_playingComponents = [chord_help_text, chord]
