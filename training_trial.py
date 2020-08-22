@@ -85,11 +85,11 @@ class ChordManager:
         finally:
             return chord
 
- def check_chord(self, chord_type):
-     """
-    Check the chord type.
-    """
-    if self.current_cord_type is None or chord_type is None:
-        raise Exception
-    else:
-        return chord_type == self.current_cord_type
+    def check_chord(self, chord_type):
+        """
+        Check the chord type.
+        """
+        if self.current_cord_type is None or chord_type is None:
+            raise Exception
+        else:
+            return chord_type == self.current_cord_type
