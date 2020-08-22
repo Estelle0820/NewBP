@@ -43,12 +43,6 @@ class ChordManager:
         random.shuffle(self.chord_ABC_list)
         self.current_cord_type = None
 
-    def chord_lists_empty(self):
-        """
-        Return any of the chord lists is empty.
-        """
-        return (len(self.chord_AAB_list) == 0 or len(self.chord_ABC_list) == 0)
-
     def choose_chord_type(self):
         """
         Randomly pick a chord type.
@@ -82,18 +76,20 @@ class ChordManager:
         """
         Get a chord and return None if failed.
         """
-        if self.chord_lists_empty():
-            return None
-        else:
-            self.current_cord_type = self.choose_chord_type()
-            logger.info('Chord type: ' + str(self.current_cord_type.name))
-            return self.chord_AAB_list.pop() if self.current_cord_type == ChordType.AAB else self.chord_ABC_list.pop()
+        self.current_cord_type = self.choose_chord_type()
+        try:
+            chord = self.chord_AAB_list.pop(
+            ) if self.current_cord_type == ChordType.AAB else self.chord_ABC_list.pop()
+        except IndexError:
+            chord = None
+        finally:
+            return chord
 
-    def check_chord(self, chord_type):
-        """
+ def check_chord(self, chord_type):
+      """
         Check the chord type.
         """
-        if self.current_cord_type is None or chord_type is None:
+       if self.current_cord_type is None or chord_type is None:
             raise Exception
         else:
             return chord_type == self.current_cord_type
