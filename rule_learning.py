@@ -503,24 +503,24 @@ def run():
             frameN = frameN + 1
             # update/draw components on each frame
 
-            # *text* updates
-            if text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # *result_text* updates
+            if result_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                text.frameNStart = frameN  # exact frame index
-                text.tStart = t  # local t and not account for scr refresh
-                text.tStartRefresh = tThisFlipGlobal  # on global time
+                result_text.frameNStart = frameN  # exact frame index
+                result_text.tStart = t  # local t and not account for scr refresh
+                result_text.tStartRefresh = tThisFlipGlobal  # on global time
                 # time at next scr refresh
-                win.timeOnFlip(text, 'tStartRefresh')
-                text.setAutoDraw(True)
-            if text.status == STARTED:
+                win.timeOnFlip(result_text, 'tStartRefresh')
+                result_text.setAutoDraw(True)
+            if result_text.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > text.tStartRefresh + MAX_RESULT_PLAY_TIME - frameTolerance:
+                if tThisFlipGlobal > result_text.tStartRefresh + MAX_RESULT_PLAY_TIME - frameTolerance:
                     # keep track of stop time/frame for later
-                    text.tStop = t  # not accounting for scr refresh
-                    text.frameNStop = frameN  # exact frame index
+                    result_text.tStop = t  # not accounting for scr refresh
+                    result_text.frameNStop = frameN  # exact frame index
                     # time at next scr refresh
-                    win.timeOnFlip(text, 'tStopRefresh')
-                    text.setAutoDraw(False)
+                    win.timeOnFlip(result_text, 'tStopRefresh')
+                    result_text.setAutoDraw(False)
 
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -543,8 +543,8 @@ def run():
         for thisComponent in training_trial_resultComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        thisExp.addData('text.started', text.tStartRefresh)
-        thisExp.addData('text.stopped', text.tStopRefresh)
+        thisExp.addData('result_text.started', result_text.tStartRefresh)
+        thisExp.addData('result_text.stopped', result_text.tStopRefresh)
 
     # Flip one final time so any remaining win.callOnFlip()
     # and win.timeOnFlip() tasks get executed before quitting
