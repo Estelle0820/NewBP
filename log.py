@@ -56,23 +56,24 @@ LOGGING_DIC = {
             'encoding': 'utf-8',
         },
         # print to debug log files, collect log of level higher than DEBUG
-        'debug': {
-                    'level': 'DEBUG',
-                    'class': 'logging.handlers.RotatingFileHandler',  # save to file
-                    'formatter': 'simple',
-                    'filename': '%s/%s_debug.log' % (log_path, log_time),  # log file path
-                    'maxBytes': 1024*1024*128,    # log file size 128MB
-                    'backupCount': 5,
-                    'encoding': 'utf-8',
-                },
+        # 'debug': {
+        #     'level': 'DEBUG',
+        #     'class': 'logging.handlers.RotatingFileHandler',  # save to file
+        #     'formatter': 'simple',
+        #     # log file path
+        #     'filename': '%s/%s_debug.log' % (log_path, log_time),
+        #     'maxBytes': 1024*1024*128,    # log file size 128MB
+        #     'backupCount': 5,
+        #     'encoding': 'utf-8',
+        # },
     },
     # logger instances
     'loggers': {
-        '': {
-            'handlers': ['console', 'common', 'debug'],
-            'level': 'DEBUG',
-            'propagate': True,  # propagate to higher level logger
-        },
+        # '': {
+        #     'handlers': ['console', 'common', 'debug'],
+        #     'level': 'DEBUG',
+        #     'propagate': True,  # propagate to higher level logger
+        # },
         'default': {
             'handlers': ['console', 'common'],
             'level': 'INFO',

@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import random
-from enum import Enum
 
 from psychopy.sound import Sound
 
@@ -10,14 +9,6 @@ from param import *
 from utils import *
 import log
 logger = log.Logging.getLogger()
-
-
-class ChordType(Enum):
-    """
-    Defines types of chord.
-    """
-    AAB = 0
-    ABC = 1
 
 
 class ChordManager:
@@ -31,24 +22,22 @@ class ChordManager:
         self.chord_AAB_list = []
         self.chord_ABC_list = []
         self.participant_group = participant_group
-        self.CHORD_PATH = os.path.join(ASSETS_PATH, participant_group)
-        self.CHORD_AAB_PATH = os.path.join(CHORD_TYPE_PATH, 'AAB')
-        self.CHORD_ABC_PATH = os.path.join(CHORD_TYPE_PATH, 'ABC')
+        self.chord_path = os.path.join(args.MUSIC_PATH, participant_group)
+        self.chord_AAB_path = os.path.join(self.chord_path, 'AAB')
+        self.chord_ABC_path = os.path.join(self.chord_path, 'ABC')
         self.fill_chord_lists()
         self.current_cord_type = None
-        
 
-
-    def fill_chord_lists():
-        for i in range(CHORD_AAB_COUNT):
-            chord_path = os.path.join(CHORD_AAB_PATH, '%d.wav' % i)
+    def fill_chord_lists(self):
+        for file_name in read_all_files_in_directory(self.chord_AAB_path):
+            chord_path = os.path.join(self.chord_AAB_path, file_name)
             chord = Sound(chord_path, secs=-1,
-                          stereo=True, hamming=True, name='chord_AAB_%d' % i, volume=1.0)
+                          stereo=True, hamming=True, name='chord_AAB_%d' % file_name, volume=1.0)
             self.chord_AAB_list.append(chord)
-        for i in range(CHORD_ABC_COUNT):
-            chord_path = os.path.join(CHORD_ABC_PATH, '%d.wav' % i)
+        for file_name in read_all_files_in_directory(self.chord_ABC_path):
+            chord_path = os.path.join(self.chord_ABC_path, file_name)
             chord = Sound(chord_path, secs=-1,
-                          stereo=True, hamming=True, name='chord_ABC_%d' % i, volume=1.0)
+                          stereo=True, hamming=True, name='chord_ABC_%d' % file_name, volume=1.0)
             self.chord_ABC_list.append(chord)
         random.shuffle(self.chord_AAB_list)
         random.shuffle(self.chord_ABC_list)
@@ -88,7 +77,7 @@ class ChordManager:
         """
         self.current_cord_type = self.choose_chord_type()
         # check if the chord lists is empty
-        if len(self.chord_AAB_list) == 0 and len(self.chord_ABC_list) == 0 and refill:
+        if (len(self.chord_AAB_list) == 0 or len(self.chord_ABC_list) == 0) and refill:
             self.fill_chord_lists()
         try:
             chord = self.chord_AAB_list.pop(
