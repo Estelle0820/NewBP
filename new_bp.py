@@ -35,13 +35,14 @@ class NewBP:
             args.MAX_WELCOME_SHOW_TIME, [self.welcome_text])
 
     def train(self):
+        logger.info('Training Start')
         # init training loop
         total_train_trial_count = 0
         correct_continuous_train_trial_count = 0
         continue_training_trial = True
         while continue_training_trial:
             # *Step 1: play music*
-            refill = total_train_trial_count > args.AT_LEAST_TRIAL
+            refill = total_train_trial_count <= args.AT_LEAST_TRIAL
             chord = self.chord_manager.get_chord(refill)  # select music
             if chord is None:
                 # failed test
@@ -76,7 +77,7 @@ class NewBP:
                     continue_training_trial = False
             # *Step 4: Show result*
             self.run_experiment_routine(
-                args.MAX_WELCOME_SHOW_TIME, [self.result_text])
+                args.MAX_RESULT_SHOW_TIME, [self.result_text])
 
     def test(self):
         pass
@@ -150,16 +151,16 @@ class NewBP:
                         # keep track of stop time/frame for later
                         component.tStop = t  # not accounting for scr refresh
                         component.frameNStop = frameN  # exact frame index
-                    if isinstance(component, visual.TextStim):
-                        # time at next scr refresh
-                        self.win.timeOnFlip(component, 'tStopRefresh')
-                        component.setAutoDraw(False)
-                    elif isinstance(component, sound.Sound):
-                        # time at next scr refresh
-                        self.win.timeOnFlip(component, 'tStopRefresh')
-                        component.stop()
-                    else:
-                        pass
+                        if isinstance(component, visual.TextStim):
+                            # time at next scr refresh
+                            self.win.timeOnFlip(component, 'tStopRefresh')
+                            component.setAutoDraw(False)
+                        elif isinstance(component, sound.Sound):
+                            # time at next scr refresh
+                            self.win.timeOnFlip(component, 'tStopRefresh')
+                            component.stop()
+                        else:
+                            pass
             # update key response if exists
             if key_resp is not None:
                 waitOnFlip = False
@@ -237,4 +238,4 @@ class NewBP:
 
 if __name__ == "__main__":
     new_bp = NewBP()
-    new_bp.welcome()
+    new_bp.run()

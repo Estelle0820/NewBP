@@ -40,6 +40,10 @@ class ChordManager:
         self.fill_chord_lists()
         self.current_cord_type = None
 
+    def clear_chord_lists(self):
+        self.chord_AAB_list = []
+        self.chord_ABC_list = []
+
     def fill_chord_lists(self):
         for file_name in ExperimentManager.read_all_files_in_directory(self.chord_AAB_path):
             chord_path = os.path.join(self.chord_AAB_path, file_name)
@@ -90,6 +94,7 @@ class ChordManager:
         self.current_cord_type = self.choose_chord_type()
         # check if the chord lists is empty
         if (len(self.chord_AAB_list) == 0 or len(self.chord_ABC_list) == 0) and refill:
+            self.clear_chord_lists()
             self.fill_chord_lists()
         try:
             chord = self.chord_AAB_list.pop(

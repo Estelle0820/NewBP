@@ -39,7 +39,7 @@ args.DIALOG_CHOICE_FIELDS = {'Group': args.GROUP_TYPES}
 args.FRAME_TOLERANCE = 0.001
 
 args.WELCOME_TEXT = 'Welcome\n\nHi~\n\n'
-args.CHORD_HELP_TEXT = 'Listen to the chord.'
-args.ANSWER_HELP_TEXT = 'Press <space> if the chord is the target chord.\nNeglect it if it is not.'
+args.CHORD_HELP_TEXT = 'Listen to the chord'
+args.ANSWER_HELP_TEXT = 'Press <space> if the chord is the target chord and neglect it if it is not'
 
 logger.info(args)
