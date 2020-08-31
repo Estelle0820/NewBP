@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
 import argparse
-from enum import Enum
-from psychopy import gui
 
 import log
 logger = log.Logging.getLogger()
@@ -31,22 +29,17 @@ args.MAX_RESULT_SHOW_TIME = 1.0
 args.EXPERIMENT_NAME = 'New BP Experiment'
 args.GROUP_TYPES = [1, 2, 3, 4]
 args.GROUP_NAMES = {
-    '1': 'unconventional_consonant',
-    '2': 'unconventional_dissonant',
-    '3': 'western_consonant',
-    '4': 'western_dissonant',
+    1: 'unconventional_consonant',
+    2: 'unconventional_dissonant',
+    3: 'western_consonant',
+    4: 'western_dissonant',
 }
 args.DIALOG_NORMAL_FIELDS = ['Name', 'Student ID', 'Age']
 args.DIALOG_CHOICE_FIELDS = {'Group': args.GROUP_TYPES}
 args.FRAME_TOLERANCE = 0.001
 
-
-class ChordType(Enum):
-    """
-    Defines types of chord.
-    """
-    AAB = 0
-    ABC = 1
-
+args.WELCOME_TEXT = 'Welcome\n\nHi~\n\n'
+args.CHORD_HELP_TEXT = 'Listen to the chord.'
+args.ANSWER_HELP_TEXT = 'Press <space> if the chord is the target chord.\nNeglect it if it is not.'
 
 logger.info(args)

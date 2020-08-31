@@ -69,11 +69,11 @@ LOGGING_DIC = {
     },
     # logger instances
     'loggers': {
-        # '': {
-        #     'handlers': ['console', 'common', 'debug'],
-        #     'level': 'DEBUG',
-        #     'propagate': True,  # propagate to higher level logger
-        # },
+        '': {
+            'handlers': ['console', 'common'],
+            'level': 'DEBUG',
+            'propagate': True,  # propagate to higher level logger
+        },
         'default': {
             'handlers': ['console', 'common'],
             'level': 'INFO',
