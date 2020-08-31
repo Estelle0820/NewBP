@@ -25,4 +25,3 @@ python new_bp.py
 - Chord
 - Response
 - Statistics
-- 
