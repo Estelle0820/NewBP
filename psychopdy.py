@@ -2,16 +2,6 @@
 # Start Code - component code to be run before the window creation
 
 
-# Initialize components for Routine "welcome"
-welcomeClock = core.Clock()
-welcome_text = visual.TextStim(win=win, name='welcome_text',
-                               text='Welcome\n\nHi~\n\n',
-                               font='Arial',
-                               pos=(0, 0), height=0.1, wrapWidth=None, ori=0,
-                               color='white', colorSpace='rgb', opacity=1,
-                               languageStyle='LTR',
-                               depth=0.0)
-
 # Initialize components for Routine "training_trial_chord_playing"
 training_trial_chord_playingClock = core.Clock()
 chord_manager = ChordManager()
@@ -363,7 +353,6 @@ while continue_training_trial:
             logger.info('Key response recived.')
         thisExp.addData('key_resp.started', key_resp.tStartRefresh)
         thisExp.addData('key_resp.stopped', key_resp.tStopRefresh)
-        thisExp.nextEntry()
 
         """
         Step 3: Check answer
