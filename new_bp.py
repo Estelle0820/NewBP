@@ -27,6 +27,8 @@ class NewBP:
             [welcome_text])
 
     def train(self):
+        result_text = ExperimentManager.get_experiment_text(self.win, 'result_text', '')
+        chord_help_text = ExperimentManager.get_experiment_text(self.win, 'result_text', 'Listen to the chord.')
 
         args.MAX_CHORD_PLAY_TIME
         total_train_trial_count = 0
@@ -38,8 +40,8 @@ class NewBP:
             chord = self.chord_manager.get_chord(refill)  # select music
             if chord is None:
                 # failed test
-                logger.info('Training trial failed!')
-                result_text.setText('Training trial failed')
+                logger.info('Training trial failed.')
+                result_text.setText('Training trial failed.')
                 continue_training_trial = False
 
     def test(self):
