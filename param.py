@@ -37,6 +37,7 @@ args.GROUP_NAMES = {
 args.DIALOG_NORMAL_FIELDS = ['Name', 'Student ID', 'Age']
 args.DIALOG_CHOICE_FIELDS = {'Group': args.GROUP_TYPES}
 args.FRAME_TOLERANCE = 0.001
+args.FULL_SCREEN = True
 
 args.WELCOME_TEXT = 'Welcome\n\nHi~\n\n'
 args.CHORD_HELP_TEXT = 'Listen to the chord'

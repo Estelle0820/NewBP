@@ -215,7 +215,7 @@ class ExperimentManager():
         return this_exp
 
     @staticmethod
-    def get_experiment_window(size=(1024, 768), fullscr=False,
+    def get_experiment_window(size=(1024, 768), fullscr=args.FULL_SCREEN,
                               screen=0, winType='pyglet'):
         win = visual.Window(
             size=size, fullscr=fullscr, screen=screen,
