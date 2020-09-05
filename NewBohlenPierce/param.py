@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 import os
+import sys
 import argparse
 
-import log
-logger = log.Logging.getLogger()
+from .log import Logging
+logger = Logging.getLogger()
 
 
 class Parameter():
@@ -16,7 +17,7 @@ class Parameter():
 parameter = Parameter()
 args = parameter.args
 
-args.ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
+args.ROOT_PATH = os.path.dirname(os.path.abspath(__package__))
 args.DATA_PATH = os.path.join(args.ROOT_PATH, 'data')
 args.ASSETS_PATH = os.path.join(args.ROOT_PATH, 'assets')
 args.MUSIC_PATH = os.path.join(args.ASSETS_PATH, 'music')

@@ -11,7 +11,7 @@ from psychopy.hardware import keyboard
 from psychopy.constants import (NOT_STARTED, STARTED, PLAYING, PAUSED,
                                 STOPPED, FINISHED, PRESSED, RELEASED, FOREVER)
 
-from param import args
+from .param import args
 
 
 class ChordType(Enum):
@@ -193,7 +193,7 @@ class ExperimentManager():
         Return the path for data saving.
         """
         data_save_directory = os.path.join(
-            args.DATA_PATH, '%s_%s' % (exp_info['Student ID'], exp_info['Name']))
+            args.DATA_PATH, '%s_%s_%s' % (exp_info['Group'], exp_info['Student ID'], exp_info['Name']))
         data_save_path = os.path.join(
             data_save_directory, '%s' % exp_info['Date'])
         return data_save_path

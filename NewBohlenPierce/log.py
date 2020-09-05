@@ -2,10 +2,11 @@
 Logging module
 """
 
-import os
-import time
-import logging
 import logging.config
+import logging
+import time
+import os
+import sys
 
 # log formats
 standard_format = '[%(levelname)s][%(asctime)s][%(threadName)s:%(thread)d][task_id:%(name)s]' \
@@ -13,7 +14,7 @@ standard_format = '[%(levelname)s][%(asctime)s][%(threadName)s:%(thread)d][task_
 simple_format = '[%(levelname)s][%(asctime)s][%(filename)s:%(lineno)d]%(message)s'
 id_simple_format = '[%(levelname)s][%(asctime)s] %(message)s'
 
-root_path = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.dirname(os.path.abspath(__package__))
 log_path = os.path.join(root_path, 'logs')
 if not os.path.exists(log_path):
     os.makedirs(log_path)
